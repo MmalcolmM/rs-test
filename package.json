@@ -20,7 +20,7 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "@apollo/server/express4": "^4.0.0",
+   
     "@apollo/server": "^4.10.5",
     "@chakra-ui/react": "^2.8.2",
     "@emotion/react": "^11.13.0",
