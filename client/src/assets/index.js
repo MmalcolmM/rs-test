@@ -6,3 +6,4 @@ export {default as facial } from "./facial.jpg";
 export {default as esth} from "./esth.jpg";
 export {default as permMakeup} from "./permMakeup.jpeg"
 export {default as waxed} from "./waxed.jpg"
+export {default as bev} from './bev.jpeg'

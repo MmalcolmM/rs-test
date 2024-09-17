@@ -4,19 +4,25 @@ import { GETSERVICES } from '../../utils/queries';
 import { REMOVESERVICE } from "../../utils/mutations";
 import { useAuth } from '../../utils/auth';
 import { Link } from "react-router-dom";
-import { facial, placeholder, permMakeup, esth, waxed } from "../../assets/index"; // Import all required images here
+import { facial, placeholder, permMakeup, esth, waxed, bev } from "../../assets/index"; // Import all required images here
 
 // ServiceCard component for displaying individual services
 function ServiceCard({ title, price, description, imageSrc }) {
   return (
-    <Flex className="serviceCardContainer" alignItems="center" mb={8}>
+    <Flex 
+      className="serviceCardContainer" 
+      alignItems={{ base: "flex-start", md: "center" }} 
+      mb={8} 
+      flexDirection={{ base: "column", md: "row" }} // Stack vertically on smaller screens
+    >
       <Image
         src={imageSrc || placeholder}
         alt={title}
-        boxSize="150px"
+        boxSize={{ base: "100px", md: "150px" }} // Smaller size for mobile
         objectFit="cover"
         borderRadius="full"
-        mr={6}
+        mr={{ base: 0, md: 6 }} // Remove margin on mobile
+        mb={{ base: 4, md: 0 }} // Add margin-bottom on mobile
       />
       <Box>
         <Text className="card-title" fontSize="xl" fontWeight="bold">{title}</Text>
@@ -27,18 +33,25 @@ function ServiceCard({ title, price, description, imageSrc }) {
   );
 }
 
+
 // Section component for organizing services under a particular category with a header and image
 function Section({ header, description, imageSrc, services = [] }) {
   return (
     <Box mb={12}>
-      <Flex alignItems="center" mb={8}>
+      <Flex 
+        alignItems="center" 
+        mb={8} 
+        flexDirection={{ base: "column", md: "row" }} // Stack image and text on mobile
+        textAlign={{ base: "center", md: "left" }} // Center text on mobile
+      >
         <Image
           src={imageSrc || placeholder}
           alt={header}
-          boxSize="350px"
+          boxSize={{ base: "200px", md: "350px" }} // Adjust image size for mobile
           objectFit="cover"
           borderRadius="md"
-          mr={6}
+          mb={{ base: 4, md: 0 }} // Add margin-bottom on mobile
+          mr={{ base: 0, md: 6 }} // Remove margin-right on mobile
         />
         <Box>
           <Text fontSize="3xl" fontWeight="bold" mb={4}>
@@ -55,12 +68,13 @@ function Section({ header, description, imageSrc, services = [] }) {
           title={service.title}
           price={service.price}
           description={service.description}
-          imageSrc={service.imageSrc} // Assuming you have images, use service.imageSrc
+          imageSrc={service.imageSrc}
         />
       ))}
     </Box>
   );
 }
+
 
 
 const ServicesPage = () => {
@@ -105,7 +119,7 @@ const ServicesPage = () => {
       <Section
         header="Esthetics Services"
         description="Discover our premium esthetics services designed to rejuvenate and enhance your natural beauty. From revitalizing facials and luxurious lash lifts to precise brow laminations and more, Deidre provides personalized treatments to leave you feeling refreshed and radiant."
-        imageSrc={esth} // Replace with appropriate image
+        imageSrc={bev} // Replace with appropriate image
         services={estheticsServices}  
       />
 

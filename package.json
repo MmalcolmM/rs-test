@@ -13,14 +13,13 @@
     "seedAdmin": "node server/seeds/seedAdmin.js ",
     "seed": "node server/seeds/seed.js",
     "vite": "vite",
-    "install": ""
+    "install-all": "npm install && npm install --prefix client && npm install --prefix server"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {
-   
     "@apollo/server": "^4.10.5",
     "@chakra-ui/react": "^2.8.2",
     "@emotion/react": "^11.13.0",
@@ -44,5 +43,4 @@
     "concurrently": "^8.2.2",
     "vite": "^4.0.0"
   }
- 
 }
